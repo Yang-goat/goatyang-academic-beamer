@@ -33,7 +33,6 @@ xelatex -interaction=nonstopmode -halt-on-error main.tex
 | `main.tex` / `main.pdf` | 完整示例及编译结果 |
 | `GoatYangAcademic.sty` | 主题、排版和通用组件 |
 | `docs/preview.png` | 示例页面预览 |
-| `PUBLISHING.md` | GitHub 与博客发布准备 |
 
 ## 常用配置
 
@@ -73,4 +72,4 @@ Logo 默认留空，最多显示两张，自动保持宽高比。主题配色以
 - [下载示例 PDF](https://github.com/Yang-goat/goatyang-academic-beamer/blob/main/main.pdf)
 - [作者博客](https://goatyang.com/)
 
-当前尚未指定发行许可证；发布文件范围见 [发布说明](PUBLISHING.md)。学校标识保留在本地 `img/` 目录，默认示例不使用，Git 忽略规则默认排除。
+当前尚未指定发行许可证。学校标识保留在本地 `img/` 目录，默认示例不使用，Git 忽略规则默认排除。
