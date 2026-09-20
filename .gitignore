@@ -1,0 +1,12 @@
+# Local institution assets; excluded from the public template by default.
+img/
+*.aux
+*.log
+*.nav
+*.out
+*.snm
+*.toc
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+build/

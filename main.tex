@@ -1,0 +1,188 @@
+% !TEX program = xelatex
+\documentclass[aspectratio=169,11pt]{beamer}
+% Fandol ships with common TeX distributions and avoids Windows-only font names.
+\usepackage[UTF8,fontset=fandol]{ctex}
+\setCJKfamilyfont{GYKai}[AutoFakeBold=2]{FandolKai-Regular}
+\usepackage{amsmath,booktabs,array,tabularx}
+\usepackage{GoatYangAcademic}
+\AtBeginDocument{\CJKfamily{GYKai}}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+
+% ===== Edit presentation metadata here =====
+\title{GoatYang Academic}
+\subtitle{学术汇报与组会 Beamer 模板}
+\author[goat\_yang]{goat\_yang}
+\institute{学院 / 研究机构 · 课题组}
+\date{\today}
+\shortreporttitle{GoatYang Academic}
+% Optional user-provided logos; keep empty for the public example.
+% \universitylogo{img/university-logo.pdf}
+% \schoollogo{img/school-logo.png}
+% \enableSectionPages
+% \setbeamertemplate{navigation symbols}{}
+
+\begin{document}
+\begin{frame}[plain,noframenumbering]\titlepage\end{frame}
+\begin{frame}{汇报目录}\tableofcontents[hideallsubsections]\end{frame}
+
+\section{研究背景}
+\begin{frame}[t]{研究背景与汇报主线}
+\topic{核心问题}
+\entry{用一句话说明研究对象、应用场景和当前方法的不足。}
+\entry{明确本次汇报希望回答的问题，避免只罗列阅读过的材料。}
+\contentdivider
+\topic{汇报主线}
+\entry{研究背景：为什么值得研究？}
+\entry{方法分析：关键机制如何解决问题？}
+\entry{验证计划：用什么实验支持结论？}
+\end{frame}
+
+\begin{frame}[t]{文献概览与选文依据}
+\begin{tabularx}{\textwidth}{lYYY}
+\toprule 编号 & 研究问题 & 核心方法 & 关注点 \\
+\midrule
+P1 & 基准问题与假设 & 基础方法 & 性能与成本 \\
+P2 & 现有方法的不足 & 改进机制 & 消融证据 \\
+P3 & 更广泛的场景 & 扩展方法 & 泛化与局限 \\
+\bottomrule
+\end{tabularx}
+\vspace{.3cm}
+\begin{block}{阅读记录}
+填写真实题目、作者、年份与出处；将论文结论、个人理解和待验证假设分开。
+\end{block}
+\end{frame}
+
+\section{方法分析}
+\begin{frame}[t]{研究动机：问题与思路}
+\begin{columns}[T,onlytextwidth]
+\begin{column}{.48\textwidth}
+\topic{现有问题}
+\entry{基线方法在什么条件下表现不足？}
+\entry{限制来自模型假设、搜索机制还是计算预算？}
+\entry{已有实验证据能支持多强的判断？}
+\end{column}
+\begin{column}{.48\textwidth}
+\topic{解决思路}
+\entry{提出一个可以被独立验证的改进机制。}
+\entry{解释机制与问题之间的对应关系。}
+\entry{预先定义有效与无效的判断条件。}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}[t]{方法框架：从输入到验证}
+\centering
+\begin{tikzpicture}[node distance=.45cm,
+  stage/.style={draw=GYBlue,fill=GYPaleBlue,rounded corners=3pt,
+    minimum width=2.65cm,minimum height=1.15cm,align=center,font=\small},
+  >=Stealth]
+\node[stage] (a) {问题定义\\数据与约束};
+\node[stage,right=of a] (b) {基线方法\\统一预算};
+\node[stage,right=of b] (c) {改进机制\\独立消融};
+\node[stage,right=of c] (d) {结果分析\\适用边界};
+\draw[->,thick,GYBlue] (a)--(b);
+\draw[->,thick,GYBlue] (b)--(c);
+\draw[->,thick,GYBlue] (c)--(d);
+\end{tikzpicture}
+\par\vspace{.5cm}
+\begin{block}{讲解重点}
+先解释输入、输出与整体流程，再展开关键模块；每个模块对应一个明确的问题。
+\end{block}
+\end{frame}
+
+\begin{frame}[t]{公式与符号说明}
+\begin{columns}[T,onlytextwidth]
+\begin{column}{.48\textwidth}
+\topic{优化模型示例}
+\begin{equation*}
+\begin{aligned}
+\min_{\boldsymbol{x}}\quad & f(\boldsymbol{x}) \\
+\text{s.t.}\quad & g_j(\boldsymbol{x})\leq 0,\\
+& \boldsymbol{\ell}\leq\boldsymbol{x}\leq\boldsymbol{u}.
+\end{aligned}
+\end{equation*}
+\end{column}
+\begin{column}{.48\textwidth}
+\topic{符号含义}
+\entry{$\boldsymbol{x}$：待优化的决策变量。}
+\entry{$f$：目标函数；$g_j$：第 $j$ 个约束。}
+\entry{$\boldsymbol{\ell},\boldsymbol{u}$：变量上下界。}
+\entry{模型假设与单位需在实际汇报中补齐。}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}[t]{图文布局与图片尺寸}
+\begin{columns}[T,onlytextwidth]
+\begin{column}{.58\textwidth}
+\centering
+\begin{tikzpicture}
+\node[draw=GYBlue,fill=GYPaleBlue,rounded corners,
+ minimum width=.94\linewidth,minimum height=3.5cm,align=center]
+ {在此放置方法图或实验图\\保持原始宽高比};
+\end{tikzpicture}
+\end{column}
+\begin{column}{.38\textwidth}
+\topic{图旁说明}
+\entry{先说明读图方式，再给出主要发现。}
+\entry{宽度和高度是容器上限，图片不会被拉伸。}
+\entry{裁剪只去除无效空白，不切掉图例与坐标轴。}
+\end{column}
+\end{columns}
+\end{frame}
+
+\section{实验设计}
+\begin{frame}[t]{最小验证与消融设计}
+\begin{tabularx}{\textwidth}{lYY}
+\toprule 组别 & 设置 & 验证目的 \\
+\midrule
+基线 & 原始方法与统一预算 & 建立可复现的参照 \\
+改进 & 基线加单一机制 & 检查改进是否有效 \\
+消融 & 移除关键组件 & 判断收益来源 \\
+稳健性 & 多种场景与随机种子 & 判断结论适用范围 \\
+\bottomrule
+\end{tabularx}
+\vspace{.3cm}
+\begin{alertblock}{公平比较}
+统一数据划分、评价预算、停止条件和统计口径，同时报告效果与计算成本。
+\end{alertblock}
+\end{frame}
+
+\begin{frame}[t]{结果展示与结论边界}
+\begin{columns}[T,onlytextwidth]
+\begin{column}{.48\textwidth}
+\begin{block}{观测结果}
+填写实际实验指标、误差范围、样本量与运行条件。没有结果时保留为计划，不填虚构数字。
+\end{block}
+\end{column}
+\begin{column}{.48\textwidth}
+\begin{exampleblock}{解释与局限}
+区分结果直接支持的结论与机制推测；列出失败场景、额外成本和待验证条件。
+\end{exampleblock}
+\end{column}
+\end{columns}
+\contentdivider
+\topic{一句话结论}
+本页回答一个具体问题，并用图表或数据支撑。
+\end{frame}
+
+\section{总结计划}
+\begin{frame}[t]{下一步计划与讨论}
+\topic{近期计划}
+\entry{复现基线，核对数据与评价实现。}
+\entry{完成单机制实验与必要消融。}
+\entry{记录失败案例，调整研究假设。}
+\contentdivider
+\topic{需要讨论的问题}
+\entry{研究问题是否清晰，验证范围是否合适？}
+\entry{当前证据还缺少哪些关键对照？}
+\end{frame}
+
+\begin{frame}[plain,noframenumbering]
+\centering\vfill
+{\LARGE\bfseries\color{GYBlue}感谢聆听，欢迎讨论\par}
+\vspace{.5cm}
+{\color{GYGray}GoatYang Academic · goat\_yang\par}
+\vfill
+\end{frame}
+\end{document}

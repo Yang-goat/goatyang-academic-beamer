@@ -1,0 +1,157 @@
+% GoatYang Academic — design and maintenance: goat_yang.
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{GoatYangAcademic}[2026/09/20 GoatYang Academic by goat_yang]
+
+
+\mode<presentation>
+
+\RequirePackage{tikz}
+\usetikzlibrary{positioning,arrows.meta,calc}
+\RequirePackage{graphicx}
+\RequirePackage{etoolbox}
+
+\definecolor{GYBlue}{HTML}{075B9A}
+\definecolor{GYDeepBlue}{HTML}{063B67}
+\definecolor{GYSkyBlue}{HTML}{DDECF7}
+\definecolor{GYPaleBlue}{HTML}{F3F8FC}
+\definecolor{GYText}{HTML}{25313B}
+\definecolor{GYGray}{HTML}{687784}
+
+\useoutertheme[footline=authorinstitutetitle,subsection=false]{smoothbars}
+\useinnertheme{circles}
+
+\setbeamercolor{normal text}{fg=GYText,bg=white}
+\setbeamercolor{structure}{fg=GYBlue}
+\setbeamercolor{frametitle}{fg=white,bg=GYBlue}
+\setbeamercolor{title}{fg=GYBlue}
+\setbeamercolor{subtitle}{fg=GYText}
+\setbeamercolor{author}{fg=GYText}
+\setbeamercolor{institute}{fg=GYText}
+\setbeamercolor{date}{fg=GYText}
+\setbeamercolor{titlelike}{parent=palette primary}
+
+\setbeamercolor{block title}{fg=white,bg=GYBlue}
+\setbeamercolor{block body}{fg=GYText,bg=GYPaleBlue}
+\setbeamercolor{block title alerted}{fg=white,bg=GYDeepBlue}
+\setbeamercolor{block body alerted}{fg=GYText,bg=GYSkyBlue!55!white}
+\setbeamercolor{block title example}{fg=white,bg=GYDeepBlue}
+\setbeamercolor{block body example}{fg=GYText,bg=GYSkyBlue!45!white}
+\setbeamercolor{item projected}{fg=white,bg=GYBlue}
+\setbeamercolor{section in toc}{fg=GYDeepBlue}
+\setbeamercolor{subsection in toc}{fg=GYBlue}
+
+\setbeamercolor{palette primary}{use=structure,fg=white,bg=structure.fg}
+\setbeamercolor{palette secondary}{use=structure,fg=white,bg=structure.fg!75!black}
+\setbeamercolor{palette tertiary}{use=structure,fg=white,bg=structure.fg!50!black}
+\setbeamercolor{palette quaternary}{fg=white,bg=structure.fg!55!black}
+\setbeamercolor{palette sidebar primary}{use=normal text,fg=normal text.fg}
+\setbeamercolor{palette sidebar secondary}{use=structure,fg=structure.fg}
+\setbeamercolor{palette sidebar tertiary}{use=normal text,fg=normal text.fg}
+\setbeamercolor{palette sidebar quaternary}{use=structure,fg=structure.fg}
+
+\setbeamertemplate{items}[circle]
+\setbeamertemplate{enumerate items}[circle]
+\setbeamertemplate{blocks}[rounded][shadow=false]
+\setbeamersize{text margin left=0.72cm,text margin right=0.72cm}
+
+\setbeamerfont{title}{series=\bfseries,size=\LARGE}
+\setbeamerfont{subtitle}{size=\normalsize}
+\setbeamerfont{frametitle}{series=\bfseries,size=\large}
+\setbeamerfont{normal text}{size=\small}
+\setbeamerfont{block title}{series=\bfseries,size=\small}
+\setbeamerfont{block body}{size=\small}
+\setbeamerfont{itemize/enumerate body}{size=\small}
+\setbeamerfont{itemize/enumerate subbody}{size=\small}
+\setbeamerfont{description body}{size=\small}
+\setbeamerfont{author}{size=\normalsize}
+\setbeamerfont{institute}{size=\small}
+\setbeamerfont{date}{size=\small}
+\setbeamerfont{footline}{size=\scriptsize}
+\setbeamerfont{author in head/foot}{size=\scriptsize}
+\setbeamerfont{title in head/foot}{size=\scriptsize}
+\setbeamerfont{institute in head/foot}{size=\scriptsize}
+\setbeamerfont{frame number}{size=\scriptsize}
+
+\newcommand{\GYSchoolName}{学院 / 研究机构}
+\newcommand{\GYShortTitle}{组会汇报}
+\newcommand{\GYSchoolLogo}{}
+\newcommand{\GYUniversityLogo}{}
+\newcommand{\schoolname}[1]{\renewcommand{\GYSchoolName}{#1}}
+\newcommand{\shortreporttitle}[1]{\renewcommand{\GYShortTitle}{#1}}
+\newcommand{\schoollogo}[1]{\renewcommand{\GYSchoolLogo}{#1}}
+\newcommand{\universitylogo}[1]{\renewcommand{\GYUniversityLogo}{#1}}
+
+\setbeamertemplate{footline}{%
+  \leavevmode
+  \hbox{%
+    \begin{beamercolorbox}[wd=.30\paperwidth,ht=.28cm,dp=.12cm,leftskip=.45cm]{frametitle}%
+      \usebeamerfont{footline}\insertshortauthor
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.52\paperwidth,ht=.28cm,dp=.12cm,center]{frametitle}%
+      \usebeamerfont{footline}\GYShortTitle
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.18\paperwidth,ht=.28cm,dp=.12cm,rightskip=.45cm plus1fil]{frametitle}%
+      \usebeamerfont{footline}\insertframenumber\,/\,\inserttotalframenumber
+    \end{beamercolorbox}%
+  }%
+}
+
+\setbeamertemplate{title page}{%
+  \begin{tikzpicture}[remember picture,overlay]
+    \fill[GYDeepBlue] (current page.north west) rectangle ([yshift=-.38cm]current page.north east);
+    \fill[GYBlue] ([yshift=-.38cm]current page.north west) rectangle ([yshift=-.50cm]current page.north east);
+    \fill[GYBlue] (current page.south west) rectangle ([yshift=.38cm]current page.south east);
+    \fill[GYSkyBlue] ([yshift=.38cm]current page.south west) rectangle ([yshift=.50cm]current page.south east);
+  \end{tikzpicture}%
+  \vspace{.28cm}
+  \noindent\makebox[\textwidth][c]{%
+    \begin{tikzpicture}
+      \node[fill=GYBlue,rounded corners=4pt,text=white,
+            text width=.72\textwidth,align=center,
+            minimum height=1.5cm,font=\usebeamerfont{title}] {\inserttitle};
+    \end{tikzpicture}%
+  }\par
+  \begin{center}
+    {\usebeamerfont{subtitle}\color{GYDeepBlue}\insertsubtitle\par}
+    \vspace{.22cm}
+    {\usebeamerfont{author}\insertauthor\par}
+    \vspace{.28cm}
+    {\usebeamerfont{institute}\insertinstitute\par}
+    \vspace{.3cm}
+    {\usebeamerfont{date}\insertdate\par}
+    \vspace{.42cm}
+    {\GYRenderLogo{\GYUniversityLogo}\hspace{.6cm}%
+     \GYRenderLogo{\GYSchoolLogo}}\par
+  \end{center}
+}
+
+\AtBeginDocument{\kaishu}
+
+
+% Mature meeting-deck typography and reusable content components.
+\setbeamertemplate{frametitle}{%
+  \nointerlineskip
+  \begin{beamercolorbox}[wd=\paperwidth,sep=.16cm,leftskip=.56cm,rightskip=.56cm]{frametitle}%
+    \fontsize{12.5}{15}\selectfont\bfseries\insertframetitle\strut\par
+  \end{beamercolorbox}}
+\setbeamerfont{normal text}{size=\normalsize}
+\setbeamerfont{footline}{size=\tiny}
+\AtBeginEnvironment{frame}{\fontsize{10.5}{14}\selectfont\raggedright}
+\setlength{\abovedisplayskip}{5pt}
+\setlength{\belowdisplayskip}{5pt}
+\setlength{\abovedisplayshortskip}{3pt}
+\setlength{\belowdisplayshortskip}{3pt}
+\setlength{\emergencystretch}{1.5em}
+\newcommand{\topic}[1]{\par\vspace{.08cm}{\color{GYBlue}\bfseries #1}\par\vspace{.12cm}}
+\newcommand{\entry}[1]{\par\hangindent=1em\hangafter=1\noindent\makebox[1em][l]{\color{GYBlue}\textbullet}#1\par\vspace{1.5pt}}
+\newcommand{\compacttopic}[1]{\par\vspace{1pt}{\color{GYBlue}\bfseries #1}\par\vspace{2pt}}
+\newcommand{\compactentry}[1]{\par\hangindent=1em\hangafter=1\noindent\makebox[1em][l]{\color{GYBlue}\textbullet}#1\par\vspace{.5pt}}
+\newenvironment{compactcontent}{\begingroup\fontsize{9}{11}\selectfont\let\topic\compacttopic\let\entry\compactentry}{\par\endgroup}
+\newcommand{\contentdivider}{\par\vspace{.14cm}{\color{GYSkyBlue}\hrule height .5pt}\vspace{.18cm}}
+\newcommand{\fitfigure}[3]{\includegraphics[width=#2,height=#3,keepaspectratio]{#1}}
+\newcommand{\GYRenderLogo}[1]{\expandafter\ifstrempty\expandafter{#1}{}{\IfFileExists{#1}{\includegraphics[width=3cm,height=1.15cm,keepaspectratio]{#1}}{}}}
+\newcommand{\GYSectionPage}{\begin{frame}{汇报目录}\tableofcontents[currentsection,hideallsubsections]\end{frame}}
+\newcommand{\enableSectionPages}{\AtBeginSection[]{\GYSectionPage}}
+\AtBeginSection[]{}
+\AtBeginSubsection[]{}
+\mode<all>
